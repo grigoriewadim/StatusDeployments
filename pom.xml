@@ -9,7 +9,6 @@
     <version>1.0-SNAPSHOT</version>
 
     <build>
-
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -19,9 +18,36 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.6</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>lib</classpathPrefix>
+                            <mainClass>Main</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.6</version>
+                <configuration>
+                    <archive>
+                        <manifestEntries>
+                            <mainClass>Main</mainClass>
+                            <Built-By>grigoriewadim</Built-By>
+                            <Class-Path>lib/jboss-cli-client.jar</Class-Path>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
-
     <dependencies>
         <dependency>
             <groupId>org.jboss.as</groupId>
@@ -30,13 +56,5 @@
             <scope>system</scope>
             <systemPath>${project.basedir}/lib/jboss-cli-client.jar</systemPath>
         </dependency>
-        <dependency>
-            <groupId>org.apache.poi</groupId>
-            <artifactId>poi</artifactId>
-            <version>3.17</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/lib/poi-4.0.0.jar</systemPath>
-        </dependency>
     </dependencies>
-
 </project>
